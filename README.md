@@ -6,7 +6,7 @@ Python 3.8 and hug 2.6.1
 
 Clone project and install
 
-        $ git clone http://github.com/pangellov/simple-app-monitor.git
+        $ git clone https://github.com/pangellov/event-viewer.git
 
         pip install -r requirements.txt
 
