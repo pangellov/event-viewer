@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Apllication Monitor
+	</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://momentjs.com/downloads/moment.js"></script>
+	<script src="index.js" type="text/javascript"></script>
+</head>
+<body>
+    <input id="analyzeButtonOne" type="button" value="Analyze type one" class="m-3"/>
+    <input id="analyzeButtonTwo" type="button" value="Analyze type two" class="m-3"/>
+
+    <div id="myVueAppContainer">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="currently-down-tab" data-toggle="tab" href="#currently-down" role="tab" aria-controls="currently-down" aria-selected="true">Currently down services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="recently-down-tab" data-toggle="tab" href="#recently-down" role="tab" aria-controls="recently-down" aria-selected="false">Recently down services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="flapping-services-tab" data-toggle="tab" href="#flapping" role="tab" aria-controls="flapping" aria-selected="false">Flapping services</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="currently-down" role="tabpanel" aria-labelledby="currently-down-tab">
+                <table class="table mt-5" >
+                    <thead>
+                    <tr>
+                        <th scope="col">Service ID</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in currently_down">
+                        <th scope="row">{{ item.id }}</th>
+                        <td>{{ item.duration }}</td>
+                        <td>{{ item.startTime }}</td>
+                        <td>{{ item.endTime }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="recently-down" role="tabpanel" aria-labelledby="recently-down-tab">
+                <table class="table mt-5" >
+                    <thead>
+                    <tr>
+                        <th scope="col">Service ID</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in recently_down">
+                        <th scope="row">{{ item.id }}</th>
+                        <td>{{ item.duration }}</td>
+                        <td>{{ item.startTime }}</td>
+                        <td>{{ item.endTime }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="flapping" role="tabpanel" aria-labelledby="flapping-services-tab">
+                <table class="table mt-5" >
+                    <thead>
+                    <tr>
+                        <th scope="col">Service ID</th>
+                        <th scope="col">Outages Duration</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        <th scope="col">Amount Of Outages</th>
+                        <th scope="col">Sum Of Outages</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in flapping_services">
+                        <th scope="row">{{ item.id }}</th>
+                        <td>{{ item.duration }}</td>
+                        <td>{{ item.startTime }}</td>
+                        <td>{{ item.endTime }}</td>
+                        <td>{{ item.amountOfOutages }}</td>
+                        <td>{{ item.sumOfOutages }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
