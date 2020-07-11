@@ -23,6 +23,9 @@ def index():
 @hug.local()
 #  Analyze type one - use one outage more than once for flapping scenarios
 def analyze_json_type_one(body):
+"""
+Add docstring
+"""
     flapping_services = []
     currently_down = []
     recently_down = []
